@@ -1,0 +1,60 @@
+@import "../../base.scss";
+
+.sidebar {
+  color: $text-color;
+  background: $black-secondary;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 90vh; // 100vh - 10vh of header so remaining will be 90vh
+  padding-top: 2rem;
+  transition: transform 0.2s ease-in;
+
+  li {
+    display: flex;
+    align-items: center;
+
+    padding: 0.5rem 1.5rem;
+    margin: 0.2rem 0;
+    cursor: pointer;
+
+    span {
+      margin-left: 1rem;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.4px;
+    }
+    &:hover {
+      background-color: $border-color;
+    }
+  }
+  hr {
+    background-color: white;
+  }
+
+  &.open {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: $breakpoint-medium) {
+  .sidebar {
+    width: 90px;
+    li {
+      justify-content: center;
+    }
+    span {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-small) {
+  .sidebar {
+    transform: translateX(-100%);
+
+    //if sidebar is hidden the remaining content should take full width
+    position: fixed;
+    z-index: 999;
+  }
+}
