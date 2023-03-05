@@ -7,16 +7,19 @@ import {
 } from "./actionType";
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import auth from "../fireBase";
+import auth from "../../fireBase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-
-const googleProvider = new GoogleAuthProvider();
 
 export const login = createAsyncThunk("auth/login", async (_, thunkAPI) => {
   try {
     thunkAPI.dispatch({
       type: LOGIN_REQUEST,
     });
+    const googleProvider = new GoogleAuthProvider();
+
+    googleProvider.addScope(
+      "https://www.googleapis.com/auth/youtube.force-ssl"
+    );
     const res = await signInWithPopup(auth, googleProvider);
     const accessToken = res.user.accessToken;
 
@@ -44,7 +47,6 @@ export const login = createAsyncThunk("auth/login", async (_, thunkAPI) => {
     });
   }
 });
-
 
 export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {

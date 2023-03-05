@@ -10,7 +10,7 @@ import {
   MdSentimentDissatisfied,
 } from "react-icons/md";
 import { useDispatch } from "react-redux";
-import { logout } from "../../redux/authActions";
+import { logout } from "../../redux/actions/authActions";
 const SideBar = ({ toggleSideBar, handleToggleSideBar }) => {
   const dispatch = useDispatch()
   const logOutHandler = () => {

@@ -4,7 +4,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOG_OUT,
-} from "../actionType";
+} from "../actions/actionType";
 
 import { createSlice } from "@reduxjs/toolkit";
 
